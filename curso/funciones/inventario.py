@@ -2,24 +2,47 @@ print('*** sistema de inventario funciones ***')
 
 inventario=[
     {'id' : 1, 'nombre' : 'casa' , 'precio' : 30},
-    {'id' : 2, 'nombre' : 'yo' , 'precio' : 30},
-    {'id' : 3, 'nombre' : 'pantalo' , 'precio' : 30},
+    {'id' : 2, 'nombre' : 'yo' , 'precio' : 25},
+    {'id' : 3, 'nombre' : 'pantalo' , 'precio' : 70},
 ]
 
 def mostrar_inventario():
+    print('--inventario--')
     for producto in inventario:
-        print(f'''--inventario--
+        print(f'''
                 id = {producto.get('id')}
                 nombre = {producto.get('nombre')}
                 precio = {producto.get('precio')}
                 ''')
         
 def agregar_produto():
-    pass
+    numeroproc = int(input('ingrese el numero de productos para agregar: '))
+    for indice in range(numeroproc):
+        id = int(input('ingresar el id: '))
+        nombre = input('ingresar el nombre: ')
+        precio = float(input('ingresar el precio: '))
+
+        producto = {'id' : id, 'nombre' : nombre, 'precio' : precio}
+
+        inventario.append(producto)
 
 def buscar_id():
-    pass
+    buscar = int(input('ingresar el id del producto que desea buscar: '))
+    producto_encontrado = None
 
+    for producto in inventario:
+        if producto.get('id') == buscar:
+            producto_encontrado = producto
+            break
+    if producto is not None:
+            print(f'''---producto encontrado---
+                id: {producto.get('id')}
+                nombre: {producto.get('nombre')}
+                precio: {producto.get('precio')}''')
+    else:
+        print('producto no encontrado')
+    
+    
 if __name__ == '__main__':
     while True:
         print('''--menu de opciones--
